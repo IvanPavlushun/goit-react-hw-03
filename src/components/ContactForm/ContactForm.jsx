@@ -1,0 +1,47 @@
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import s from "./ContactForm.module.css";
+
+export const ContactForm = ({onAdd}) => {
+  const initialValues = {
+    name:"",
+    number:""
+  }
+
+  const handleSubmit = (values, options) => {
+    console.log(values);
+    onAdd(values);
+    options.resetForm();
+  }
+
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .min(3, "Мінімум 3 символи")
+      .max(50, "Максимум 50 символів")
+      .required("Обов'язкове поле"),
+    number: Yup.string()
+      .min(3, "Мінімум 3 символи")
+      .max(50, "Максимум 50 символів")
+      .required("Обов'язкове поле"),
+  });
+  return (
+    <div>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
+        <Form className={s.form}>
+          <label className={s.input}>
+            Name
+            <Field name="name" type="text"></Field>
+            <ErrorMessage className={s.error} name="name" component="div"></ErrorMessage>
+          </label>
+          <label className={s.input}>
+            Number
+            <Field name="number" type="number"></Field>
+            <ErrorMessage className={s.error} name="number" component="div"></ErrorMessage>
+          </label>
+          <button className={s.button} type="submit">Add contact</button>
+        </Form>
+      </Formik>
+    </div>
+  )
+}
+export default ContactForm;

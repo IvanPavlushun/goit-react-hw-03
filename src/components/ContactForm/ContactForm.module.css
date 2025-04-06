@@ -1,0 +1,26 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 300px;
+    margin-bottom: 24px;
+border: 1px solid black;
+padding: 16px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    max-width: 100px;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 14px;
+}
