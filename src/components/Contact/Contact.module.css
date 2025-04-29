@@ -18,6 +18,9 @@
 .button{
     height: 32px;
     font-weight: bold;
+    font-size: 12px;
+    border-radius: 2px;
+    cursor: pointer;
 }
 
 .listItem {
